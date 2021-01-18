@@ -11,7 +11,8 @@ GraphNode::~GraphNode()
     //// STUDENT CODE
     ////
 
-    delete _chatBot; 
+    // GraphNode shouldn't have ownership of ChatBot.
+    // delete _chatBot; 
 
     ////
     //// EOF STUDENT CODE
