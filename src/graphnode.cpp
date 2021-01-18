@@ -8,6 +8,7 @@ GraphNode::GraphNode(int id)
 
 GraphNode::~GraphNode()
 {
+    std::cout << "GraphNode Destructor" << std::endl;
     //// STUDENT CODE
     ////
 
