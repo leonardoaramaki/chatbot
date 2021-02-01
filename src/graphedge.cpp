@@ -6,6 +6,11 @@ GraphEdge::GraphEdge(int id)
     _id = id;
 }
 
+GraphEdge::~GraphEdge()
+{
+    std::cout << "GraphEdge Destructor\n";
+}
+
 void GraphEdge::SetChildNode(GraphNode *childNode)
 {
     _childNode = childNode;
