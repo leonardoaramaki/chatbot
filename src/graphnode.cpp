@@ -9,6 +9,9 @@ GraphNode::GraphNode(int id)
 GraphNode::~GraphNode()
 {
     std::cout << "GraphNode Destructor" << std::endl;
+    // if (_chatBot) {
+    //     delete _chatBot;
+    // }
     //// STUDENT CODE
     ////
 
@@ -37,15 +40,18 @@ void GraphNode::AddEdgeToChildNode(GraphEdge *edge)
 
 //// STUDENT CODE
 ////
-void GraphNode::MoveChatbotHere(ChatBot *chatbot)
+void GraphNode::MoveChatbotHere(ChatBot&& chatbot)
 {
-    _chatBot = chatbot;
+    _chatBot = new ChatBot();
+    ChatBot temp = std::move(chatbot);
+    *_chatBot = std::move(temp);
     _chatBot->SetCurrentNode(this);
 }
 
 void GraphNode::MoveChatbotToNewNode(GraphNode *newNode)
 {
-    newNode->MoveChatbotHere(_chatBot);
+    newNode->MoveChatbotHere(std::move(*_chatBot));
+    if (_chatBot) delete _chatBot;
     _chatBot = nullptr; // invalidate pointer at source
 }
 ////
